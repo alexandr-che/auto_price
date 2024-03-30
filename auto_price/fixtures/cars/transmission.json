@@ -1,0 +1,1 @@
+[{"model": "cars.transmission", "pk": 1, "fields": {"type_transmission": "Автомат"}}, {"model": "cars.transmission", "pk": 2, "fields": {"type_transmission": "Робот"}}, {"model": "cars.transmission", "pk": 3, "fields": {"type_transmission": "Вариатор"}}, {"model": "cars.transmission", "pk": 4, "fields": {"type_transmission": "Механика"}}]

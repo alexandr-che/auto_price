@@ -1,0 +1,1 @@
+[{"model": "cars.handdrive", "pk": 1, "fields": {"type_hand_drive": "Левый"}}, {"model": "cars.handdrive", "pk": 2, "fields": {"type_hand_drive": "Правый"}}]

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block small_filter %}
+  {% include 'includes/small_side_filter.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+
+    {% if advert.images.all %}
+    
+    <!-- CARUSEL -->
+    <div class="col">
+      <div class="container-fluid mt-5">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% for image in advert.images.all %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %} c-item">
+                <img src="{{ image.image.url }}" class="d-block w-100 img-fluid c-img" alt="Car Image">
+              </div>
+            {% endfor %}
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon pos-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon pos-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- CARUSEL END -->
+
+    {% else %}
+      <img class="no-image" src="\static\img\no-image-large.jpg" alt="no-image">
+
+    {% endif %}
+
+    <div class="col mt-5">
+      <!-- ADVERT BODY -->
+      <span class="lead"><strong>Пробег - </strong>{{ advert.mileage }} км.</span><br>
+      <span class="lead"><strong>Тип двигателя - </strong>{{ advert.type_engien }}</span><br>
+      <span class="lead"><strong>Объем двигателя - </strong>{{ advert.volume }} л.</span><br>
+      <span class="lead"><strong>Коробка передач - </strong>{{ advert.transmission }}</span><br>
+      <span class="lead"><strong>Привод - </strong>{{ advert.drive_unit }}</span><br>
+      <span class="lead"><strong>Руль - </strong>{{ advert.hand_drive }}</span><br>
+      {% if car.broken %}
+        <span class="lead"><strong>Битый - </strong>Да</span><br>
+      {% else %}
+        <span class="lead"><strong>Битый - </strong>Нет</span><br>
+      {% endif %}
+
+      <div class="description mt-4">
+        <h3>Описание:</h3>
+        <span class="lead">{{ advert.description }}</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <h3>{{ advert.brand }} {{ advert.model }} {{ advert.year }} года<br></h3>
+      <span>
+        Цена: <b>{{ advert.price }}</b> ₽<br>
+        Опубликовано: <em>{{ advert.date_published }}</em><br>
+        Добавил объявление: <a href="{% url 'users:profile_other_user' username=advert.user.username %}">{{ advert.user.username }}</a>
+      </span><p></p>
+    </div>
+
+    <div class="col mt-3">
+      <!-- Favorite -->
+      {% if request.user.is_authenticated %}
+        {% if advert.id in user_favorite_adverts %}
+          <form action="{% url 'adverts:del_fav' %}" method="post" id="{{ advert.id }}">
+            {% csrf_token %}
+            <input type="hidden" name="advert_id" value="{{ advert.id }}" />
+            <button type="submit" class="button-dislike"><i class="bi bi-heart"></i></button>
+          </form>
+        {% else %}
+          <form action="{% url 'adverts:add_fav' %}" method="post" id="{{ advert.id }}">
+            {% csrf_token %}
+            <input type="hidden" name="advert_id" value="{{ advert.id }}" />
+            <button type="submit" class="button-like"><i class="bi bi-heart"></i></button>
+          </form>
+        {% endif %}
+      {% endif %}
+      <!-- Favorite end -->
+    </div>
+
+  </div>
+
+  {% if request.user == advert.user %}
+    <div class="adcert-control">
+      <a href="{% url "adverts:advert_update" slug=advert.slug %}" class="btn btn-success btn-sm">Редактировать</a>
+      <a href="{% url "adverts:advert_delete" slug=advert.slug %}" class="btn btn-danger btn-sm">Удалить</a>
+    </div>
+  {% endif %}
+
+{% endblock %}

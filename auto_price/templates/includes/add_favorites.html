@@ -1,0 +1,19 @@
+{% if request.user.is_authenticated %}
+{% if p.id in user_favorite_adverts %}
+    <form action="{% url "adverts:del_fav" %}" method="post" id="{{p.id}}">
+        {% csrf_token %}
+        <input type="hidden" name="advert_id" value="{{p.id}}">
+        <button type="submit" class="button-dislike">
+            <i class="bi bi-heart"></i>
+        </button>                        
+    </form>
+{% else %}
+    <form action="{% url "adverts:add_fav" %}" method="post" id="{{p.id}}">
+        {% csrf_token %}
+        <input type="hidden" name="advert_id" value="{{p.id}}">
+        <button type="submit" class="button-like">
+            <i class="bi bi-heart"></i>
+        </button>                        
+    </form>  
+{% endif %}
+{% endif %}

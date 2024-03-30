@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 class="text mt-4" style="text-align: center">Поиск по фильтрам</h3>
+<form action="{% url "cars:search" %}" method="post">
+    {% csrf_token %}
+    <div class="contaier mt-2">
+        <div class="row">
+
+            <div class="col-lg-4">
+                <p>
+                    <h6>Марка:</h6>
+                    {{big_filter_car.form.brand}}
+                </p>
+                <p>
+                    <h6>Модель:</h6>
+                    {{big_filter_car.form.model}}
+                </p>
+                <p>
+                    <h6>Тип кузова:</h6>
+                    {{big_filter_car.form.body}}
+                </p>
+                <p>
+                    <h6>Цвет:</h6>
+                    {{big_filter_car.form.color}}
+                </p>
+            </div>
+
+            <div class="col-lg-4">
+
+                <p>
+                    <h6>Тип двигателя:</h6>
+                    {{big_filter_car.form.type_engien}}
+                </p>
+                <p>
+                    <h6>Объем двигателя:</h6>
+                    {{big_filter_car.form.volume}}
+                </p>
+                <p>
+                    <h6>Мощность двигателя:</h6>
+                    {{big_filter_car.form.power_engien}}                
+                </p>
+            </div>
+
+            <div class="col-lg-4">
+                <p>
+                    <h6>Коробка передач:</h6>
+                    {{big_filter_car.form.transmission}}
+                </p>
+                <p>
+                    <h6>Привод:</h6>
+                    {{big_filter_car.form.drive_unit}}
+                </p>
+                <p>
+                    <h6>Расположение руля:</h6>
+                    {{big_filter_car.form.hand_drive}}
+                </p>
+                <p>
+                    <h6>Битый:&nbsp;&nbsp;&nbsp;&nbsp;{{big_filter_car.form.broken}}</h6>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <p>
+                    <h6 class="mile-age">Год:</h6>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">От</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="year_min"
+                            id="id_year_0"
+                            placeholder="Начиная с этого года"
+                            >
+                      </div>
+                      
+                      <div class="input-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="year_max"
+                            id="id_year_1"
+                            placeholder="Заканчивая этим годом"
+                        >                        
+                        <span class="input-group-text">До</span>
+                      </div>
+                </p>
+            </div>
+
+            <div class="col">
+                <p>
+                    <h6 class="mile-age">Пробег:</h6>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">От</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="mileage_min"
+                            id="id_mileage_0"
+                            placeholder="Минимальный пробег"
+                            >
+                      </div>
+                      
+                      <div class="input-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="mileage_max"
+                            id="id_mileage_1"
+                            placeholder="Максимальный пробег"
+                        >                        
+                        <span class="input-group-text">До</span>
+                      </div>
+                </p>
+            </div>
+            <div class="col">
+                <p>
+                    <h6 class="mile-age">Цена:</h6>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">₽</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="price_min"
+                            id="id_price_0"
+                            placeholder="Минимальная цена"
+                        >
+                    </div>
+            
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="price_max"
+                            id="id_price_1"
+                            placeholder="Максимальная цена"
+                        >
+                        <span class="input-group-text">₽</span>
+                    </div>
+                </p>
+            </div> 
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary my-4" type="submit">Найти</button>
+        </div>
+    </div>
+</form>
+
+    {% if big_filter_car.qs %}
+    <h3 style="text-align: center">Результаты поиска по вашему запросу</h3>
+    <div class="container mt-4">
+        <div class="row">
+            {% include "includes/list_cars.html" %}
+        </div>
+    </div>
+    
+    {% else %}
+    <h4>По вашим параметрам ничего не найдено...</h4>
+    {% endif %}
+{% endblock content %}
+
+{% block paginator %}
+{% include "includes/paginator.html" %}
+{% endblock paginator %}

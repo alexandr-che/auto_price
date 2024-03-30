@@ -1,0 +1,24 @@
+[
+    {
+        "model": "cars.car",
+        "pk": 1,
+        "fields": {
+            "slug": "audi-a5",
+            "brand": 1,
+            "model": 1,
+            "year": 2009,
+            "mileage": 11000,
+            "hand_drive": 1,
+            "type_engien": 1,
+            "transmission": 1,
+            "drive_unit": 1,
+            "body": 1,
+            "color": 1,
+            "volume": 2.0,
+            "broken": false,
+            "description": "sdasda dasd cxvr drgdfg bdfbg",
+            "date_published": "2024-02-26T20:03:58.467Z",
+            "price": 155000
+        }
+    }
+]

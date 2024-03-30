@@ -1,0 +1,41 @@
+{% for p in page_obj %}
+<div class="card mx-2 mt-4">
+    {% if p.images.all %}
+        <a href="{% url "adverts:advert_detail" slug=p.slug %}">
+            <img src="{{ p.images.first.image.url }}" class="card-img-top mt-3 fixed-height" alt="Car Image">
+        </a>
+    {% else %}
+        <!-- Если у автомобиля нет изображений -->
+        <img src="\static\img\no-image-large.jpg" class="card-img-top mt-3 fixed-height" alt="Placeholder Image">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{ p.brand }} {{ p.model }}</h5>
+        <p>
+            Цена: <b>{{ p.price }}</b> ₽<br>
+            Пробег - {{ p.mileage }} км. {{ p.year }} год
+        </p>
+        <span class="card-text">{{ p.volume }} л./{{ p.type_engien }}/{{p.power_engien}} л.с.</span><br>
+        <span class="card-text">КПП - {{ p.transmission }}</span><br>
+        <span class="card-text">{{ p.body }}/{{ p.color }}</span><br>
+
+        <div class="row">
+
+            <div class="col">
+                <div class="card-button mt-2">
+                    <a href="{% url "adverts:advert_detail" slug=p.slug %}" class="btn btn-primary">Просмотреть</a>
+                </div> 
+            </div>
+
+            <div class="col"></div>
+
+            <div class="col mt-2">
+                {% if user.is_authenticated %}
+                    {% include "includes/add_favorites.html" %}
+                {% endif %}
+            </div>
+
+        </div>        
+
+    </div>
+</div>
+{% endfor %}

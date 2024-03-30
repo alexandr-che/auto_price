@@ -1,0 +1,1 @@
+[{"model": "cars.modelauto", "pk": 1, "fields": {"name": "A5", "brand": 1}}, {"model": "cars.modelauto", "pk": 2, "fields": {"name": "E34", "brand": 2}}, {"model": "cars.modelauto", "pk": 3, "fields": {"name": "Gelandewagen", "brand": 3}}]

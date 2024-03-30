@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+            <div class="user-info mt-3 p-3">
+                <div class="row">
+
+                    <div class="col-2">
+                        {% if user.avatar %}
+                            <div class="avatar mt-4">              
+                                <img class="avatar-img" src="{{user.avatar.url}}" alt="avatar">
+                            </div>
+                            {{ user.username }}
+                        {% else %}
+                            <div class="avatar mt-4">
+                                <img class="avatar-img" src="\static\img\149071.png" alt="avatar">
+                            </div>
+                            {{ user.username }}
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col">
+                        <br>
+                        Дата регистрации: {{user.date_joined}}<br>
+                        <b>{{user.first_name}} {{user.last_name}}</b><br>
+                        {% if user.phone_number %}
+                            Телефон: {{ user.phone_number }}
+                        {% else %}
+                        Телефон: Номер не найден
+                        {% endif %}
+                    </div>
+
+                </div>
+                
+
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="fav-my-ad mt-3 p-3">
+                <b>Объявления {{ user.username }}</b>
+                
+                    {% if user_ad %}
+                        {% for ad in user_ad %}
+                            <p><a href="{{ ad.get_absolute_url }}">{{ ad.brand }} {{ ad.model }}</a></p>
+                        {% endfor %}
+                    {% else %}               
+                <p>У пользователя нет объявлений</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,1 @@
+[{"model": "cars.typeengien", "pk": 1, "fields": {"type_engien": "Бензин"}}, {"model": "cars.typeengien", "pk": 2, "fields": {"type_engien": "Дизель"}}, {"model": "cars.typeengien", "pk": 3, "fields": {"type_engien": "Электрический"}}, {"model": "cars.typeengien", "pk": 4, "fields": {"type_engien": "Гибрид"}}]

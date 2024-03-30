@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block small_filter %}
+{% include "includes/small_side_filter.html" %}
+{% endblock small_filter %}
+
+
+{% block content %}
+<div class="container mt-4">
+<h3 style="text-align: center">Результаты поиска по вашему запросу</h3>
+
+    <div class="row">
+        {% include "includes/list_cars.html" %}
+    </div>
+</div>
+{% endblock content %}
+
+{% if page_obj.has_other_pages %}
+    {% block paginator %}
+    {% include "includes/paginator.html" %}
+    {% endblock paginator %}
+{% endif %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<div class="item-page">
+  {% block small_filter %}
+    {% include 'includes/small_side_filter.html' %}
+  {% endblock %}
+
+  {% block content %}
+    <div class="container">
+
+      <div class="row">
+        <div class="title-index my-4 py-2">
+          <h4>AutoPrice - это крупнейшая площадка в России и СНГ по продаже и покупке как новых автомобилей, так и автомобилей с пробегом</h4>
+        </div>
+        {% comment %} {% include 'includes/list_adverts.html' %} {% endcomment %}
+      </div>
+
+      <div class="row">
+        <h4>Новые объявления</h4>
+        {% for ad in new_adverts %}
+          <div class="col-lg">
+            <div class="card mx-1" style="width: 14rem;">
+              {% if ad.images.all %}
+                <a href="{% url "adverts:advert_detail" slug=ad.slug %}">
+                  <img src="{{ ad.images.first.image.url }}" class="card-img-top fixed-height" alt="Car Image">
+                </a>
+              {% else %}
+                <!-- Если у автомобиля нет изображений -->
+                <a href="{% url "adverts:advert_detail" slug=ad.slug %}">
+                  <img src="\static\img\no-image-large.jpg" class="card-img-top mt-3 fixed-height" alt="Placeholder Image">
+                </a>
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ ad.brand }} {{ ad.model }}</h5>
+                <div class="card-text">
+                  Цена: <b>{{ ad.price }}</b> ₽<br>
+                  {{ ad.year }} год<br>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <a href="{% url "adverts:adverts" %}" class="btn btn-success btn-sm mt-4">Все объявления</a>
+    </div>
+
+  {% endblock %}
+</div>
+

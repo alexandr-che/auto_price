@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-10" style="width: 200rem;">
+            <h3 class="text-center mt-4">Редактирование объявления</h3>
+
+            <!-- CARUSEL -->
+                <div class="container-fluid mt-5">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                    {% for image in advert.images.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %} c-item">
+                        <img src="{{ image.image.url }}" class="d-block w-100 img-fluid c-img" alt="Car Image">
+                        </div>
+                    {% endfor %}
+                    </div>
+        
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon pos-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                    </button>
+        
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon pos-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                    </button>
+                </div>
+                </div>
+            <!-- CARUSEL END -->
+
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <b>Проверьте эти поля для ввода:</b>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li><b>{{ field.label }}</b>: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <form action="{% url "adverts:advert_update" slug=advert.slug %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+                <div class="col-lg-8 mt-4">
+                    <div class="row">
+
+                        <div class="col-lg-4">
+
+                            <label for="id_brand" class="form-label">{{form.brand.label}}:</label>
+                            {{form.brand}}
+
+                            <label for="id_model" class="form-label">{{form.model.label}}:</label>
+                            {{form.model}}
+
+                            <label for="id_year" class="form-label">{{form.year.label}}:</label>
+                            {{ form.year }}
+
+                            <label for="id_mileage" class="form-label">{{form.mileage.label}}:</label>
+                            {{ form.mileage }}                         
+                            
+                        </div>
+                        
+                        
+                        <div class="col-lg-4">
+
+                            <label for="id_type_engien" class="form-label">{{form.type_engien.label}}:</label>
+                            {{ form.type_engien }}
+ 
+                            <label for="id_volume" class="form-label">{{form.volume.label}}:</label>
+                            {{ form.volume }}
+
+                            <label for="id_power_engien" class="form-label">{{form.power_engien.label}}:</label>
+                            {{ form.power_engien }}
+                            
+                            <label for="id_transmission" class="form-label">{{form.transmission.label}}:</label>
+                            {{ form.transmission }}
+                
+                            
+                        </div>
+                        
+                        
+                        <div class="col-lg-4">
+
+                            <label for="id_drive_unit" class="form-label">{{form.drive_unit.label}}:</label>
+                            {{ form.drive_unit }}
+                            
+                            <label for="id_hand_drive" class="form-label">{{form.hand_drive.label}}:</label>
+                            {{ form.hand_drive }}
+
+                            <label for="id_body" class="form-label">{{form.body.label}}:</label>
+                            {{ form.body }}
+
+                            <label for="id_color" class="form-label">{{form.color.label}}:</label>
+                            {{ form.color }}
+
+                        </div>
+                        
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="id_description" class="form-label">{{form.description.label}}:</label>
+                                {{ form.description }}                       
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_image" class="form-label">Загрузите фотографии</label>                           
+                            <input class="form-control" type="file" id="id_image" name='image' multiple>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label for="id_price" class="form-label">{{form.price.label}}:</label>
+                            {{ form.price }}
+                        </div>
+                        
+                        <div class="col-lg-3">                            
+                            <label for="id_broken" class="form-label">{{form.broken.label}}:</label>
+                            {{ form.broken }}
+                        </div>
+
+                        <p><button type="submit" class="btn btn-primary mt-4">Сохранить изменения</button></p>
+                    </div>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+</div> 
+
+{% endblock content %}
+
+
+

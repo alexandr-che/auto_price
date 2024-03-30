@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+<div class="item-page">
+    {% block small_filter %}
+    {% include "includes/small_side_filter.html" %}
+    {% endblock small_filter %}
+    
+    
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                {% include "includes/list_adverts.html" %}
+            </div>
+        </div>
+    {% endblock content %}
+</div>
+
+{% block paginator %}
+{% include "includes/paginator.html" %}
+{% endblock paginator %}

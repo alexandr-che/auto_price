@@ -1,0 +1,85 @@
+{% block small_filter %}
+
+<div class="small-filter">
+    <form action="{% url "adverts:adverts" %}" method="get">
+        <h4 class="filters">Фильтры поиска</h4><p></p>
+
+        <p>
+            <h6>Марка:</h6>
+            {{car_filter.form.brand}}
+        </p>
+        <p>
+            <h6>Модель:</h6>
+            {{car_filter.form.model}}
+        </p>
+        <p>
+            <h6>Коробка передач:</h6>
+            {{car_filter.form.transmission}}
+        </p>
+
+        <p>
+            <h6 class="mile-age">Пробег:</h6>
+            <div class="input-group mb-3">
+                <span class="input-group-text">От</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="mileage_min"
+                    id="id_mileage_0"
+                    placeholder="Минимальный пробег"
+                    >
+            </div>
+            
+            <div class="input-group">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="mileage_max"
+                    id="id_mileage_1"
+                    placeholder="Максимальный пробег"
+                >                        
+                <span class="input-group-text">До</span>
+            </div>
+        </p>
+
+        <p>
+            <h6 class="mile-age">Цена:</h6>
+            <div class="input-group mb-3">
+                <span class="input-group-text">₽</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="price_min"
+                    id="id_price_0"
+                    placeholder="Минимальная цена"
+                >
+            </div>
+
+            <div class="input-group">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="price_max"
+                    id="id_price_1"
+                    placeholder="Максимальная цена"
+                >
+                <span class="input-group-text">₽</span>
+            </div>
+        </p>
+            
+        <p>
+            Битый:&nbsp;&nbsp;&nbsp;&nbsp;{{ car_filter.form.broken }}
+        </p>
+
+
+        <p>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Найти</button>
+            </div>
+        </p>
+
+    </form>
+
+    <a href="{% url "adverts:filters_advert" %}" class="link-secondary">Больше фильтров</a>
+</div>
+{% endblock small_filter %}

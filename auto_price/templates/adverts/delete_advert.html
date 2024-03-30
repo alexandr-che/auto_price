@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-3">
+    
+            <div class="card">
+                {% if advert.images.all %}
+                    <img src="{{ advert.images.first.image.url }}" class="card-img-top mt-3 fixed-height" alt="Car Image">
+                {% else %}
+                    <!-- Если у автомобиля нет изображений -->
+                    <img src="\static\img\no-image-large.jpg" class="card-img-top mt-3 fixed-height" alt="Placeholder Image">
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ advert.brand }} {{ advert.model }}</h5>
+                    <p>
+                        Цена: <b>{{ advert.price }}</b> ₽<br>
+                        Пробег - {{ advert.mileage }} км. {{ advert.year }} год
+                    </p>
+                    <span class="card-text">{{ advert.volume }} л./{{ advert.type_engien }}/{{advert.power_engien}} л.с.</span><br>
+                    <span class="card-text">КПП - {{ advert.transmission }}</span><br>
+                    <span class="card-text">{{ advert.body }}/{{ advert.color }}</span><br>
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="col">
+    
+            <form action="{% url "adverts:advert_delete" slug=advert.slug %}" method="post">
+                {% csrf_token %}
+                <p><h4 class="mb-4">Вы действительно хотите удалить это объявление?</h4></p>
+                <button type="submit" value="Confirm" class="btn btn-danger" style="width: 5rem;" >Да</button>
+                <a class="btn btn-outline-primary" style="width: 5rem;" href="{% url "users:profile" %}">Нет</a>
+            </form>
+    
+        </div>
+    
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

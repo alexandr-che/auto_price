@@ -1,0 +1,239 @@
+/* index page */
+.title-index {
+    display: block;
+    text-align: center;
+    border-style: solid;
+    background-color: #c9e0ff;
+    background: linear-gradient(45deg, #91bffa 10%, #ffffff 100%);
+    border-width: 0.5px;
+    border-color: #91bffa;
+    border-radius: 10px 10px;
+}
+
+
+/* navbar */
+.btn-success {
+    border-color: #7d95fd;
+}
+
+/* Установка фиксированных размеров для элементов карусели */
+.carousel-inner {
+    overflow: hidden;
+    width: 50em;
+    height: 30em;
+}
+
+.carousel-item {
+    width: 100%;
+    /* Фиксированная ширина для элемента карусели */
+    height: 100%;
+    /* Фиксированная высота для элемента карусели. Можешь изменить на необходимую величину. */
+}
+
+.c-item {
+    width: 100%;
+}
+
+.c-img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.pos-icon {
+    padding: 20px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #ffffff;
+    border-radius: 8px 8px;
+    background-color: #000000;
+}
+
+.carousel-control-next {
+    padding: auto;
+}
+
+/* боковой фильтр */
+.small-filter {
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #91bffa;
+    padding: 1rem;
+    background-color: #c9e0ff;
+    border-radius: 8px 8px;
+}
+
+/* карточка */
+.fixed-height {
+    height: 170px;
+    /* Замените это значение на желаемую фиксированную высоту */
+    object-fit: cover;
+}
+
+.card {
+    width: 18rem;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-width: 1px;
+}
+
+.card-button {
+    margin-top: auto;
+}
+
+
+.button-like {
+    border-style: solid;
+    border-width: 0.5px;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 8px 8px;
+}
+
+.button-dislike {
+    overflow: hidden;
+    border-style: solid;
+    border-width: 0.5px;
+    background-color: #faacac;
+    border-color: #ffffff;
+    border-radius: 20px 20px;
+}
+
+/* profile */
+.user-info {
+    border-style: solid;
+    background-color: #c9e0ff;
+    background: linear-gradient(45deg, #91bffa 10%, #ffffff 100%);
+    border-width: 0.5px;
+    border-color: #91bffa;
+    border-radius: 10px 10px;
+}
+
+.fav-my-ad {
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #91bffa;
+    border-radius: 10px 10px;
+}
+
+
+.adverts {
+    background-color: #faacac;
+}
+
+.user-form {
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #91bffa;
+    border-radius: 10px 10px;
+}
+
+.avatar {
+    text-align: center;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #71afff;
+    border-radius: 70px 70px;
+}
+
+.avatar-img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* advert */
+.no-image {
+    width: 50em;
+    height: 30em;
+    object-fit: contain;
+}
+.advert-info {
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 15px 15px;
+    box-shadow: 1px 1px 3px black;
+}
+
+.title-advert {
+    background-color: #71afff;
+    display: flex;
+    align-items: center;
+}
+
+.price {
+    font-size: 50px;
+    justify-content: right;
+}
+
+.info-user-advert {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    background-color: #71afff;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 15px 15px;
+    box-shadow: 1px 1px 3px black;
+}
+
+.border-avatar {
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgb(255, 0, 0);
+    border-radius: 75px 75px;
+}
+
+.avatar-up {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* update advert */
+
+
+
+/* filter */
+.big-filter-form {
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #91bffa;
+    border-radius: 10px 10px;
+    background-color: #c9e0ff;
+}
+
+.border-big-filter-button {
+    display: inline-block;
+    justify-content: center;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #91bffa;
+    border-radius: 10px 10px;
+    background-color: #c9e0ff;
+}
+
+.button-big-filter {
+    text-align: center;
+    text-decoration: none;
+    color:#51545a ;
+    
+}
+
+.button-big-filter:visited {
+    color: #000000;
+}
+
+.bi-x-circle {
+
+    background-color: #7d95fd;
+}

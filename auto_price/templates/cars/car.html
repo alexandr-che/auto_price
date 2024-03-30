@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- CARUSEL -->
+<div class="container-fluid mt-5">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 1000px">
+    <div class="carousel-inner">
+      {% for image in car.images.all %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %} c-item">
+        <img src="{{ image.image.url }}" class="d-block w-100 img-fluid c-img" alt="Car Image">
+        </div>
+      {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon pos-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Предыдущий</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon pos-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Следующий</span>
+    </button>
+
+  </div>
+</div>  
+<!-- CARUSEL END -->
+
+  <!-- ADVERT BODY -->
+<div class="container mt-7">
+  <div class="row">
+
+    <div class="col">
+      <h3>{{car.brand}} {{car.model}} {{car.year}} года<br></h3>
+      <span>Опубликовано: <em>{{car.date_published}}</em></span><p></p>
+      <span class="lead"><strong>Пробег - </strong>{{car.mileage}} км.</span><br>
+      <span class="lead"><strong>Топливо - </strong>{{car.type_engien}}</span><br>
+      <span class="lead"><strong>Объем двигателя - </strong>{{car.volume}} л.</span><br>
+      <span class="lead"><strong>Коробка передач - </strong>{{car.transmission}}</span><br>
+      <span class="lead"><strong>Привод - </strong>{{car.drive_unit}}</span><br>
+      <span class="lead"><strong>Руль - </strong>{{car.hand_drive}}</span><br>
+      {% if car.broken %}
+        <span class="lead"><strong>Битый - </strong>Да</span><br>
+      {% else %}
+        <span class="lead"><strong>Битый - </strong>Нет</span><br>
+      {% endif %}
+    </div>
+
+    <div class="col">
+      <h3>Описание:</h3>
+      <span class="lead">{{car.description}}</span>
+    </div>
+
+  </div>
+</div>
+
+{% endblock content %}
+
+

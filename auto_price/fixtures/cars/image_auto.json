@@ -1,0 +1,18 @@
+[
+    {
+        "model": "cars.imageauto",
+        "pk": 1,
+        "fields": {
+            "car": 1,
+            "image": "images/2024/02/27/Без_названия.jfif"
+        }
+    },
+    {
+        "model": "cars.imageauto",
+        "pk": 2,
+        "fields": {
+            "car": 1,
+            "image": "images/2024/02/27/114688787737w.jpg"
+        }
+    }
+]

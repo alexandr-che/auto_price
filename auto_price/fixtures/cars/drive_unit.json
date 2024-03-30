@@ -1,0 +1,1 @@
+[{"model": "cars.driveunit", "pk": 1, "fields": {"type_drive_unit": "Полный"}}, {"model": "cars.driveunit", "pk": 2, "fields": {"type_drive_unit": "Задний"}}, {"model": "cars.driveunit", "pk": 3, "fields": {"type_drive_unit": "Передний"}}]
